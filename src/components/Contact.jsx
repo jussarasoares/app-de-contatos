@@ -1,30 +1,19 @@
-import React from 'react';
+import React from "react";
 
 class Contact extends React.Component {
   render() {
+    const { data } = this.props;
     return (
       <article className="contact" data-testid="contact">
         <span className="contact__avatar">
-          <img src={this.props.data.avatar} alt={this.props.data.name} />
+          <img src={data.avatar} alt={data.name} />
         </span>
-        <span className="contact__data">
-          {this.props.data.name}
-        </span>
-        <span className="contact__data">
-          {this.props.data.phone}
-        </span>
-        <span className="contact__data">
-          {this.props.data.country}
-        </span>
-        <span className="contact__data">
-          {this.props.data.dataAdmissao}
-        </span>
-        <span className="contact__data">
-          {this.props.data.company}
-        </span>
-        <span className="contact__data">
-          {this.props.data.department}
-        </span>
+        <span className="contact__data">{data.name}</span>
+        <span className="contact__data">{data.phone}</span>
+        <span className="contact__data">{data.country}</span>
+        <span className="contact__data">{data.dataAdmissao}</span>
+        <span className="contact__data">{data.company}</span>
+        <span className="contact__data">{data.department}</span>
       </article>
     );
   }
