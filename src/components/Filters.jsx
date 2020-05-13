@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "./Button";
+import ButtonFilter from "./ButtonFilter";
 
 class Filters extends React.Component {
   render() {
@@ -12,30 +14,18 @@ class Filters extends React.Component {
               placeholder="Pesquisar"
             />
 
-            <button className="filters__search__icon">
-              <i className="fa fa-search" />
-            </button>
+            <Button className="filters__search__icon" icon="search" />
           </div>
 
-          <button className="filters__item is-selected">
-            Nome <i className="fas fa-sort-down" />
-          </button>
+          <ButtonFilter label="Nome" isSelected />
 
-          <button className="filters__item">
-            País <i className="fas fa-sort-down" />
-          </button>
+          <ButtonFilter label="País" />
 
-          <button className="filters__item">
-            Empresa <i className="fas fa-sort-down" />
-          </button>
+          <ButtonFilter label="Empresa" />
 
-          <button className="filters__item">
-            Departamento <i className="fas fa-sort-down" />
-          </button>
+          <ButtonFilter label="Departamento" />
 
-          <button className="filters__item">
-            Data de admissão <i className="fas fa-sort-down" />
-          </button>
+          <ButtonFilter label="Data de admissão" />
         </section>
       </div>
     );
