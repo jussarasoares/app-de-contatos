@@ -2,21 +2,17 @@ import React from "react";
 import Button from "./Button";
 
 class ButtonFilter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      classButton: `filters__item ${
-        this.props.isSelected ? "is-selected" : ""
-      }`,
-    };
+  handleSelected() {
+    return `filters__item ${this.props.isSelected ? "is-selected" : ""}`;
   }
 
   render() {
     return (
       <Button
-        className={this.state.classButton}
+        className={this.handleSelected()}
         label={this.props.label}
         icon="sort-down"
+        onClick={this.props.onClick}
       />
     );
   }

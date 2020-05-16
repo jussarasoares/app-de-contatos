@@ -13,7 +13,12 @@ class App extends React.Component {
 
     this.state = {
       contacts: [],
+      order: "",
+      search: "",
     };
+
+    this.setOrder = this.setOrder.bind(this);
+    this.setSearch = this.setSearch.bind(this);
   }
 
   componentDidMount() {
@@ -22,17 +27,54 @@ class App extends React.Component {
     });
   }
 
+  setOrder(data) {
+    this.setState({ order: data });
+  }
+
+  setSearch(text) {
+    this.setState({ search: text });
+  }
+
+  filterByName(search) {
+    return (value) => {
+      if (!search) {
+        return true;
+      }
+      return value.name.toLowerCase().includes(search.toLowerCase());
+    };
+  }
+
+  orderBy(key) {
+    return (a, b) => {
+      if (a[key] > b[key]) {
+        return 1;
+      }
+      if (a[key] < b[key]) {
+        return -1;
+      }
+      return 0;
+    };
+  }
+
   render() {
     return (
-      <React.Fragment>
+      <div data-testid="app" className="app">
         <Topbar />
-        <Filters />
+        <Filters
+          handleFilter={this.setOrder}
+          order={this.state.order}
+          handleSearch={this.setSearch}
+          search={this.state.search}
+        />
         <Contacts>
-          {this.state.contacts.map((contact) => (
-            <Contact data={contact} />
-          ))}
+          {this.state.contacts
+            .filter(this.filterByName(this.state.search))
+            .sort(this.orderBy(this.state.order))
+            .map((contact) => (
+              <Contact data={contact} />
+            ))}
         </Contacts>
-      </React.Fragment>
+      </div>
     );
   }
 }
