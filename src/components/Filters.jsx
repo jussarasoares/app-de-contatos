@@ -19,6 +19,8 @@ class Filters extends React.Component {
   }
 
   render() {
+    const { handleFilter, handleSearch } = this.props;
+
     return (
       <div className="container" data-testid="filters">
         <section className="filters">
@@ -34,37 +36,37 @@ class Filters extends React.Component {
             <Button
               className="filters__search__icon"
               icon="search"
-              onClick={() => this.props.handleSearch(this.state.value)}
+              onClick={() => handleSearch(this.state.value)}
             />
           </div>
 
           <ButtonFilter
             label="Nome"
-            onClick={() => this.props.handleFilter("name")}
+            onClick={() => handleFilter("name")}
             isSelected={this.isSelected("name")}
           />
 
           <ButtonFilter
             label="País"
-            onClick={() => this.props.handleFilter("country")}
+            onClick={() => handleFilter("country")}
             isSelected={this.isSelected("country")}
           />
 
           <ButtonFilter
             label="Empresa"
-            onClick={() => this.props.handleFilter("company")}
+            onClick={() => handleFilter("company")}
             isSelected={this.isSelected("company")}
           />
 
           <ButtonFilter
             label="Departamento"
-            onClick={() => this.props.handleFilter("department")}
+            onClick={() => handleFilter("department")}
             isSelected={this.isSelected("department")}
           />
 
           <ButtonFilter
             label="Data de admissão"
-            onClick={() => this.props.handleFilter("admissionDate")}
+            onClick={() => handleFilter("admissionDate")}
             isSelected={this.isSelected("admissionDate")}
           />
         </section>
